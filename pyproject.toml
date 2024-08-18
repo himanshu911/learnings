@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "t3"
+name = "learnings"
 version = "0.1.0"
 description = ""
 authors = ["Himanshu <himanshu@hunch.in>"]
