@@ -947,3 +947,42 @@ def cond_sample(c, f, model, sz, steps, eta=1.0):
         )
         preds.append(x_0_hat.float().cpu())
     return preds
+
+
+if __name__ == "__main__":
+    # Prepare data and data loaders
+    train_ds = Dataset(x=torch.randn(100, 10), y=torch.rand(100, 1))
+    valid_ds = Dataset(x=torch.randn(100, 10), y=torch.rand(100, 1))
+    dls = DataLoaders(*get_dls(train_ds, valid_ds, bs=10))
+
+    # Test DataLoader functionality
+    print("Testing DataLoader functionality...")
+    for xb, yb in dls.train:
+        print("Batch x shape:", xb.shape)
+        print("Batch y shape:", yb.shape)
+        break  # Only print the first batch to check shapes
+
+    # Define a simple model and learner
+    model = nn.Sequential(nn.Linear(10, 5), nn.ReLU(), nn.Linear(5, 1))
+    learner = Learner(
+        model=model, dls=dls, loss_func=F.mse_loss, opt_func=optim.SGD, lr=0.01
+    )
+    learner.fit(1)  # Run one epoch of training
+
+    # Test Model Prediction
+    print("Testing model predictions...")
+    xb, yb = next(iter(dls.train))
+    preds = model(xb)
+    print("Predictions shape:", preds.shape)
+
+    # Display plots (if necessary)
+    # This section will not execute in a non-interactive terminal environment
+    try:
+        print("Testing Image Display Functionality...")
+        fig, axs = get_grid(4, title="Sample Images")
+        show_images(
+            [torch.rand(28, 28) for _ in range(4)], nrows=2, ncols=2, figsize=(6, 6)
+        )
+        plt.show()
+    except Exception as e:
+        print("Could not display images due to non-interactive environment:", str(e))
