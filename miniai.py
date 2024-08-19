@@ -1,3 +1,4 @@
+# %%
 __all__ = [
     "def_device",
     "act_gr",
@@ -57,7 +58,7 @@ __all__ = [
     "sample",
     "cond_sample",
 ]
-
+# %%
 import math, typing
 from collections.abc import Mapping
 from copy import copy
