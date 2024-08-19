@@ -2,7 +2,7 @@
 name = "learnings"
 version = "0.1.0"
 description = ""
-authors = ["Himanshu <himanshu@hunch.in>"]
+authors = ["Himanshu <himanshu.shukla911@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
