@@ -10,6 +10,12 @@ python = "^3.10"
 pandas = "^2.2.2"
 fastcore = "^1.7.1"
 nbconvert = "^7.16.4"
+fastprogress = "^1.0.3"
+torcheval = "^0.0.7"
+einops = "^0.8.0"
+accelerate = "^0.33.0"
+torch = "^2.4.0"
+matplotlib = "^3.9.2"
 
 
 [build-system]
