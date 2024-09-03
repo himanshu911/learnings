@@ -1,5 +1,3 @@
-from utils import load_sklearn_dataset
-
 import torch
 from torch import nn
 from torch.utils.data import DataLoader
@@ -15,6 +13,8 @@ from miniai import (
 )
 
 from miniai import to_device
+
+from utils import load_sklearn_dataset
 
 
 class RegressionNN(nn.Module):

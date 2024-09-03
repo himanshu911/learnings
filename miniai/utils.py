@@ -1,15 +1,16 @@
-from sklearn import datasets
-from sklearn.model_selection import train_test_split
 import logging
+from sklearn import datasets as sklearn_datasets
+from sklearn.model_selection import train_test_split
+from datasets import Dataset, DatasetDict, load_dataset
 
 
 def load_sklearn_dataset(dataset_name, test_size=0.2, val_size=0.20):
     try:
-        load_func = getattr(datasets, "load_" + dataset_name, None)
+        load_func = getattr(sklearn_datasets, "load_" + dataset_name, None)
         if load_func:
             data = load_func()
         else:
-            fetch_func = getattr(datasets, "fetch_" + dataset_name, None)
+            fetch_func = getattr(sklearn_datasets, "fetch_" + dataset_name, None)
             if fetch_func:
                 data = fetch_func()
             else:
@@ -34,4 +35,3 @@ def load_sklearn_dataset(dataset_name, test_size=0.2, val_size=0.20):
     except Exception as e:
         logging.error(f"An error occurred while loading the dataset: {e}")
         return None, None, None, None, None, None
-
