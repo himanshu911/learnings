@@ -20,9 +20,9 @@ from utils import load_sklearn_dataset
 class RegressionNN(nn.Module):
     def __init__(self, input_size, output_size):
         super(RegressionNN, self).__init__()
-        self.fc1 = nn.Linear(input_size, 128)
-        self.fc2 = nn.Linear(128, 64)
-        self.fc3 = nn.Linear(64, output_size)
+        self.fc1 = nn.Linear(input_size, 128, dtype=torch.float64)
+        self.fc2 = nn.Linear(128, 64, dtype=torch.float64)
+        self.fc3 = nn.Linear(64, output_size, dtype=torch.float64)
 
     def forward(self, x):
         x = torch.relu(self.fc1(x))
