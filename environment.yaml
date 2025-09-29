@@ -1,0 +1,20 @@
+name: learnings
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pandas
+  - fastcore
+  - nbconvert
+  - fastprogress
+  - einops
+  - accelerate
+  - pytorch
+  - matplotlib
+  - jupyter
+  - ipykernel
+  - datasets
+  - scikit-learn
+  - ruff
