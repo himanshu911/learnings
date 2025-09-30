@@ -23,6 +23,9 @@ select = [
     "UP",   # pyupgrade (modernizes code)
     "RUF029", # unused async (function declared async but doesn't use async features)
 ]
+ignore = [
+    "E501",  # Line too long
+]
 
 # Ruff Format: Minimal settings to ensure Black compatibility
 [tool.ruff.format]

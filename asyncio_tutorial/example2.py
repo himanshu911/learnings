@@ -11,6 +11,7 @@ async def fetch_data(param: int) -> str:
 async def main():
     print("Starting Main Coroutine Function...")
 
+    # Method 1: create_task() - Use when you need individual task control/cancellation
     print("*" * 20)
     task1 = asyncio.create_task(fetch_data(1))
     task2 = asyncio.create_task(fetch_data(2))
@@ -19,21 +20,25 @@ async def main():
     result2 = await task2
     print("Result 2:", result2)
 
+    # Method 2: gather(coroutines) - Simple syntax, but lose individual task references
     print("*" * 20)
     coroutines = [fetch_data(i) for i in range(1, 3)]
     results = await asyncio.gather(*coroutines, return_exceptions=True)
     print(results)
 
+    # Method 3: gather(tasks) - Best for concurrent execution with error handling
     print("*" * 20)
     tasks = [asyncio.create_task(fetch_data(i)) for i in range(1, 3)]
     results = await asyncio.gather(*tasks, return_exceptions=True)
     print(results)
 
+    # Method 4: TaskGroup - Recommended for structured concurrency (Python 3.11+)
+    # Guarantees all tasks complete or all are cancelled on first exception
     print("*" * 20)
     async with asyncio.TaskGroup() as tg:
-        results = [tg.create_task(fetch_data(i)) for i in range(1, 3)]
+        tasks = [tg.create_task(fetch_data(i)) for i in range(1, 3)]
         # All tasks are awaited when the context manager exits.
-    print(f"Task Group Results: {[result.result() for result in results]}")
+    print(f"Task Group Results: {[task.result() for task in tasks]}")
 
     print("Main coroutine Function Completed.")
 
