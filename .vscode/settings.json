@@ -9,5 +9,6 @@
             "source.fixAll": "explicit"
         }
     },
-    "ruff.enable": true
+    "ruff.enable": true,
+    "python.analysis.typeCheckingMode": "strict"
 }

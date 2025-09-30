@@ -14,12 +14,14 @@ target-version = "py310" # Use a version that matches your project (e.g., py38, 
 # I: isort (import sorting)
 # UP: pyupgrade (modernizing syntax like f-strings)
 [tool.ruff.lint]
+preview = true
 select = [
     "E",    # pycodestyle errors
     "W",    # pycodestyle warnings
     "F",    # Pyflakes (bug checks)
     "I",    # isort (import sorting)
     "UP",   # pyupgrade (modernizes code)
+    "RUF029", # unused async (function declared async but doesn't use async features)
 ]
 
 # Ruff Format: Minimal settings to ensure Black compatibility
