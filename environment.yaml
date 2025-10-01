@@ -18,6 +18,7 @@ dependencies:
   - datasets
   - scikit-learn
   - ruff
+  - pre-commit
   - pip
   - pip:
     - aiofiles
