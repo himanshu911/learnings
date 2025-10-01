@@ -2,6 +2,7 @@ import asyncio
 
 
 async def access_resource(semaphore: asyncio.Semaphore, resource_id: int):
+    print(f"Entering Coroutine Function with Resource ID: {resource_id}")
     async with semaphore:
         # Simulate accessing a limited resource
         print(f"Accessing resource {resource_id}")
