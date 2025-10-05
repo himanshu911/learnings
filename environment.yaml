@@ -20,6 +20,7 @@ dependencies:
   - ruff
   - pre-commit
   - pytest
+  - sqlalchemy
   - pip
   - pip:
     - aiofiles
